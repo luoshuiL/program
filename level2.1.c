@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 int main() {
-	int jishu(int pass, int passN, int passG, int passP);
+	int jishu(int pass, int passN, int passG, int passP);   //算单次购买货物的函数
 	int pass, unitprice, number;
 	char goods;
-	int passN[6] = { 0 };
-	int passP[6] = { 0 };
-	int passG[6] = { 0 };
+	int passN[6] = { 0 };//通道货物数量
+	int passP[6] = { 0 };//通道货物单价
+	int passG[6] = { 0 };//通道货物种类
 	printf("请装填货物，按照名称 通道 单价 数量顺序填写\n");
-	int j = 0;
+	int j = 0; //已装货物的通道数目
 	do {
 		scanf_s("%c", &goods,1);//货物名称     //第一步：装入货物
 		scanf_s("%d", &pass);//通道
@@ -29,12 +29,13 @@ int main() {
 			passG[pass] = goods;
 			j++;
 		}
-		else if (passN[pass] != 0) {    //重复安装
+		else if (passN[pass] != 0) {    //重复安装报错
 			printf("当前通道已有货物请重新放置\n");
 		}
-		scanf_s("%*c");
-	}//通道 单价 数量
+		scanf_s("%*c");//清缓存区（网上学的）
+	}
 	while(pass > 5 || pass < 1 || unitprice > 9 || unitprice < 1 || goods > 90 || goods < 65||j<5);
+	printf("摆放完毕，开始购买");
 	while(j==5){     //不知道怎样写循环条件，只能凑一下了
 	int unitsum = 0;   //单此操作所需金额
 	int p = 0;  //判断是否结束
