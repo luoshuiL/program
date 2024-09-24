@@ -45,35 +45,35 @@ int main() {
 		switch (pass) {
 		case 1:
 			unitprice = 0;
-			unitsum += jishu(pass, passN[pass], passG[pass], passP[pass]);
+			unitsum = jishu(pass, passN[pass], passG[pass], passP[pass]);
 			passN[pass] -= unitsum / passP[pass];   //商品件数
 			sum += unitsum;
 			printf("当前共需要%d元，输入0结束购买\n", sum);
 			break;
 		case 2:
 			unitprice = 0;
-			unitsum += jishu(pass, passN[pass], passG[pass], passP[pass]);
+			unitsum = jishu(pass, passN[pass], passG[pass], passP[pass]);
 			passN[pass] -= unitsum / passP[pass];
 			sum += unitsum;
 			printf("当前共需要%d元，输入0结束购买\n", sum);
 			break;
 		case 3:
 			unitprice = 0;
-			unitsum += jishu(pass, passN[pass], passG[pass], passP[pass]);
+			unitsum = jishu(pass, passN[pass], passG[pass], passP[pass]);
 			passN[pass] -= unitsum / passP[pass];
 			sum += unitsum;
 			printf("当前共需要%d元，输入0结束购买\n", sum);
 			break;
 		case 4:
 			unitprice = 0;
-			unitsum += jishu(pass, passN[pass], passG[pass], passP[pass]);
+			unitsum = jishu(pass, passN[pass], passG[pass], passP[pass]);
 			passN[pass] -= unitsum / passP[pass];
 			sum += unitsum;
 			printf("当前共需要%d元，输入0结束购买\n", sum);
 			break;
 		case 5:
 			unitprice = 0;
-			unitsum += jishu(pass, passN[pass], passG[pass], passP[pass]);
+			unitsum = jishu(pass, passN[pass], passG[pass], passP[pass]);
 			passN[pass] -= unitsum / passP[pass];
 			sum += unitsum;
 			printf("当前共需要%d元，输入0结束购买\n", sum);
@@ -88,16 +88,15 @@ int main() {
 	} while (p != 1);
 		printf("共需要%d元，请投币\n", sum);
 		int coin;
-		scanf_s("%d", &coin);   //第三步：投币
 		int sc = 0;
-		sc += coin;
-		while (coin == 1 || coin == 2 || coin == 5 && sum > 0) {
-			printf("已投入%d元\n", sc);
-			scanf_s("%d", &coin);
-			if (coin != 1 && coin != 2 && coin != 5) {
-				break;
+		while(sum>0){
+			scanf_s("%d", &coin);;  //第三步：投币
+			if (coin != 1 && coin != 2 && coin != 5) {   //判断硬币面值
+				printf("不存在此金额的硬币，请重试");
+				continue;
 			};
 			sc += coin;
+			printf("当前已投入%d元\n",sc);
 			if (sc == sum) {
 				printf("购物结束\n");
 				break;
