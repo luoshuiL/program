@@ -187,8 +187,10 @@ int main() {
 	printf("共需要%d元，请投币，如需退回操作，请输入99\n", sum);
 	int coin;
 	int sc = 0;
+	k = 0;
+	i = 0;
 	int storeC[4] = { 0 };
-	while (sum > 0) {
+	while (sc<sum) {
 		scanf_s("%d", &coin);
 		switch (coin) {
 		case 1:
@@ -205,6 +207,7 @@ int main() {
 				i=1;
 				storeC[i] = coin;
 			}
+			break;
 		case 2:
 			k = 0;
 			sc += 2;
@@ -219,6 +222,7 @@ int main() {
 				i = 1;
 				storeC[i] = coin;
 			}
+			break;
 		case 5:
 			k = 0;
 			sc += 5;
@@ -233,11 +237,12 @@ int main() {
 				i = 1;
 				storeC[i] = coin;
 			}
+			break;
 		case 99:
 			k++;
 			if (j > 0 && k < 4) {
 				sc -= storeC[i];
-				printf("已回退一步，当前已投入%d元", sc);
+				printf("已回退一步，当前已投入%d元\n", sc);
 				if (i > 1) {
 					i--;
 				}
@@ -249,8 +254,16 @@ int main() {
 				printf("无法退回\n"); }
 			break;
 		default:
-			printf("没有此票面");
+			printf("没有此票面\n");
+			break;
 			}	
+	}
+	if (sc ==sum) {
+		printf("购物结束");
+	}
+	else {
+		int gap = sc - sum;
+		printf("购物结束，找零%d元\n",gap);
 	}
 		sc = 0;//初始化金额
 		printf("是否继续购买,输入1继续\n");  //是否继续购买
