@@ -12,9 +12,8 @@ int main() {
 	int storeH[6] = { 0 };
 	int k = 0;//连续退回操作的数量
 	do {
-		
-		scanf_s("%c", &goods,1);//货物名称     //第一步：装入货物
-		if (goods == 57) {                //退步操作需要
+		scanf_s("%c", &goods,40);//货物名称     //第一步：装入货物
+		if (goods==57) {                //退步操作需要
 			if (j == 0||k==3) {
 				printf("无法退回\n");
 				scanf_s("%*[^\n]");//清缓存区（网上学的）
@@ -32,6 +31,10 @@ int main() {
 				scanf_s("%*c");//清缓存区（网上学的）
 				continue;
 			}
+		}
+		else if (goods == 48) {
+			printf("已结束摆货\n");
+			break;
 		}
 		scanf_s("%d", &pass);//通道
 		scanf_s("%d", &unitprice);//单价
@@ -62,7 +65,7 @@ int main() {
 	}
 	while(pass > 5 || pass < 1 || unitprice > 9 || unitprice < 1 || goods > 90 || goods < 65||j<5);
 	printf("摆放完毕，开始购买,输入0结束购买，输入99回退一步\n");
-	while (j == 5) {     //不知道怎样写循环条件，只能凑一下了
+	while (j > 0) {     //不知道怎样写循环条件，只能凑一下了
 		int unitsum = 0;   //单此操作所需金额
 		int end = 0;  //判断是否结束
 		int sum = 0;//总金额
