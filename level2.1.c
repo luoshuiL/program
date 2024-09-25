@@ -87,6 +87,7 @@ int main() {
 			break;
 		};
 	} while (p != 1);
+	p = 0;
 		printf("共需要%d元，请投币\n", sum);
 		int coin;
 		int sc = 0;
